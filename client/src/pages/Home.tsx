@@ -1,8 +1,9 @@
 import { Button } from "@/components/ui/button";
-import { ArrowRight, CheckCircle2, TrendingUp, Zap, Globe, Lock, Apple, Download } from "lucide-react";
+import { ArrowRight, Menu, X, Check, Zap, Lock, Smartphone, Globe, TrendingUp } from "lucide-react";
 import { useState, useEffect } from "react";
 import { useLanguage } from "@/contexts/LanguageContext";
 import { translations } from "@/lib/translations";
+import NewsletterSignup from "@/components/NewsletterSignup";
 
 export default function Home() {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -78,7 +79,7 @@ export default function Home() {
       description: t_obj.features.feature4.desc
     },
     {
-      icon: <CheckCircle2 size={32} />,
+      icon: <Check size={32} />,
       title: t_obj.features.feature5.title,
       description: t_obj.features.feature5.desc
     },
@@ -175,15 +176,15 @@ export default function Home() {
               </div>
               <div className="flex flex-col gap-3 pt-4">
                 <div className="flex items-center gap-3">
-                  <CheckCircle2 size={24} className="text-[#00D632]" />
+                  <Check size={24} className="text-[#00D632]" />
                   <span className="text-gray-700">{t_obj.hero.benefit1}</span>
                 </div>
                 <div className="flex items-center gap-3">
-                  <CheckCircle2 size={24} className="text-[#00D632]" />
+                  <Check size={24} className="text-[#00D632]" />
                   <span className="text-gray-700">{t_obj.hero.benefit2}</span>
                 </div>
                 <div className="flex items-center gap-3">
-                  <CheckCircle2 size={24} className="text-[#00D632]" />
+                  <Check size={20} className="text-[#00D632]" />
                   <span className="text-gray-700">{t_obj.hero.benefit3}</span>
                 </div>
               </div>
@@ -194,14 +195,14 @@ export default function Home() {
                   onClick={handleAppStoreClick}
                   className="flex items-center gap-2 px-4 py-3 bg-black text-white rounded-lg hover:bg-[#1a1a1a] transition-colors font-bold"
                 >
-                  <Apple size={20} />
+                  <div className="text-2xl">App Store</div>
                   {language === "fr" ? "App Store" : "App Store"}
                 </button>
                 <button
                   onClick={handleAppStoreClick}
                   className="flex items-center gap-2 px-4 py-3 bg-black text-white rounded-lg hover:bg-[#1a1a1a] transition-colors font-bold"
                 >
-                  <Download size={20} />
+                  <div className="text-2xl">Google Play</div>
                   {language === "fr" ? "Google Play" : "Google Play"}
                 </button>
               </div>
@@ -368,7 +369,7 @@ export default function Home() {
                 <ul className="space-y-3">
                   {plan.features.map((feature, fidx) => (
                     <li key={fidx} className="flex items-center gap-2">
-                      <CheckCircle2 size={20} className={plan.highlighted ? "text-black" : "text-[#00D632]"} />
+                      <Check size={20} className={plan.highlighted ? "text-black" : "text-[#00D632]"} />
                       <span className="text-sm">{feature}</span>
                     </li>
                   ))}
@@ -392,12 +393,17 @@ export default function Home() {
           <p className="text-gray-400 mt-4">{t_obj.cta.note}</p>
         </div>
       </section>
+      {/* Newsletter Signup Section */}
+      <section className="bg-white py-16 border-t border-gray-200">
+        <div className="container max-w-2xl">
+          <NewsletterSignup />
+        </div>
+      </section>
 
       {/* Footer */}
-      <footer className="bg-[#1a1a1a] text-gray-400 py-12 border-t border-gray-800">
+      <footer className="bg-[#1a1a1a] text-gray-400 py-16 border-t border-gray-800">
         <div className="container">
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
-            <div>
+          <div className="grid grid-cols-1 md:grid-cols-4 gap-12 mb-12">            <div>
               <div className="flex items-center gap-2 mb-4">
                 <img src="/bouteek-logo.jpg" alt="Bouteek" className="h-8 w-8 rounded" />
                 <span className="font-bold text-white">Bouteek</span>
