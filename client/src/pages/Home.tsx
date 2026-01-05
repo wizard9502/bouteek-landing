@@ -5,6 +5,7 @@ import { useLanguage } from "@/contexts/LanguageContext";
 import { translations } from "@/lib/translations";
 import NewsletterSignup from "@/components/NewsletterSignup";
 import FAQ from "@/components/FAQ";
+import AppStoreButtons from "@/components/AppStoreButtons";
 
 export default function Home() {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -191,22 +192,7 @@ export default function Home() {
               </div>
               
               {/* App Store Icons */}
-              <div className="flex gap-4 pt-4">
-                <button
-                  onClick={handleAppStoreClick}
-                  className="flex items-center gap-2 px-4 py-3 bg-black text-white rounded-lg hover:bg-[#1a1a1a] transition-colors font-bold"
-                >
-                  <div className="text-2xl">App Store</div>
-                  {language === "fr" ? "App Store" : "App Store"}
-                </button>
-                <button
-                  onClick={handleAppStoreClick}
-                  className="flex items-center gap-2 px-4 py-3 bg-black text-white rounded-lg hover:bg-[#1a1a1a] transition-colors font-bold"
-                >
-                  <div className="text-2xl">Google Play</div>
-                  {language === "fr" ? "Google Play" : "Google Play"}
-                </button>
-              </div>
+              <AppStoreButtons />
             </div>
             <div className="relative animate-in fade-in slide-in-from-right duration-1000">
               <div className="bg-gradient-to-br from-[#00D632] to-black rounded-2xl p-8 text-white shadow-2xl">
