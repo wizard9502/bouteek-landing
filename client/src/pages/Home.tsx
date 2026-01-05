@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 import { useLanguage } from "@/contexts/LanguageContext";
 import { translations } from "@/lib/translations";
 import NewsletterSignup from "@/components/NewsletterSignup";
+import FAQ from "@/components/FAQ";
 
 export default function Home() {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -393,6 +394,9 @@ export default function Home() {
           <p className="text-gray-400 mt-4">{t_obj.cta.note}</p>
         </div>
       </section>
+      {/* FAQ Section */}
+      <FAQ />
+
       {/* Newsletter Signup Section */}
       <section className="bg-white py-16 border-t border-gray-200">
         <div className="container max-w-2xl">
