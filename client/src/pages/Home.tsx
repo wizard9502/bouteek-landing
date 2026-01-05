@@ -91,22 +91,19 @@ export default function Home() {
 
   const testimonials = [
     {
-      name: "Amara Diallo",
-      role: language === "fr" ? "Propriétaire de Boutique de Mode" : "Fashion Boutique Owner",
-      quote: t_obj.testimonials.testimonial1,
-      image: "👩‍💼"
+      name: t_obj.testimonials.name1,
+      role: t_obj.testimonials.role1,
+      quote: t_obj.testimonials.testimonial1
     },
     {
-      name: "Kwame Mensah",
-      role: language === "fr" ? "Détaillant en Électronique" : "Electronics Retailer",
-      quote: t_obj.testimonials.testimonial2,
-      image: "👨‍💼"
+      name: t_obj.testimonials.name2,
+      role: t_obj.testimonials.role2,
+      quote: t_obj.testimonials.testimonial2
     },
     {
-      name: "Zainab Hassan",
-      role: language === "fr" ? "Vendeur d'Artisanat Fait Main" : "Handmade Crafts Seller",
-      quote: t_obj.testimonials.testimonial3,
-      image: "👩‍🎨"
+      name: t_obj.testimonials.name3,
+      role: t_obj.testimonials.role3,
+      quote: t_obj.testimonials.testimonial3
     }
   ];
 
@@ -302,12 +299,12 @@ export default function Home() {
               <h3 className="text-2xl font-bold mb-6">{t_obj.payments.flowTitle}</h3>
               <div className="space-y-4">
                 <div className="flex items-center gap-4">
-                  <div className="bg-black text-[#00D632] rounded-full w-10 h-10 flex items-center justify-center font-bold">1</div>
-                  <p className="font-semibold">{t_obj.payments.flow1}</p>
+                  <div className="bg-black text-[#00D632] rounded-full w-10 h-10 flex items-center justify-center font-bold text-sm">1</div>
+                  <p className="font-semibold text-sm">{t_obj.payments.flow1}</p>
                 </div>
                 <div className="flex items-center gap-4">
-                  <div className="bg-black text-[#00D632] rounded-full w-10 h-10 flex items-center justify-center font-bold">2</div>
-                  <p className="font-semibold">{t_obj.payments.flow2}</p>
+                  <div className="bg-black text-[#00D632] rounded-full w-10 h-10 flex items-center justify-center font-bold text-sm">2</div>
+                  <p className="font-semibold text-sm">{t_obj.payments.flow2}</p>
                 </div>
                 <div className="flex items-center gap-4">
                   <div className="bg-black text-[#00D632] rounded-full w-10 h-10 flex items-center justify-center font-bold">3</div>
@@ -334,7 +331,7 @@ export default function Home() {
             {testimonials.map((testimonial, idx) => (
               <div key={idx} className="bg-white rounded-xl p-8 shadow-lg hover:shadow-xl transition-shadow">
                 <div className="flex items-center gap-4 mb-4">
-                  <div className="text-4xl">{testimonial.image}</div>
+                  <div className="w-12 h-12 bg-[#00D632] rounded-full flex items-center justify-center text-white font-bold text-lg">{testimonial.name.charAt(0)}</div>
                   <div>
                     <p className="font-bold text-black">{testimonial.name}</p>
                     <p className="text-sm text-gray-600">{testimonial.role}</p>
@@ -426,9 +423,10 @@ export default function Home() {
             <div>
               <h4 className="font-bold text-white mb-4">{t_obj.footer.legal}</h4>
               <ul className="space-y-2 text-sm">
-                <li><a href="#" className="hover:text-[#00D632] transition-colors">{t_obj.footer.privacy}</a></li>
-                <li><a href="#" className="hover:text-[#00D632] transition-colors">{t_obj.footer.terms}</a></li>
-                <li><a href="#" className="hover:text-[#00D632] transition-colors">{t_obj.footer.cookies}</a></li>
+                <li><a href="/security" className="hover:text-[#00D632] transition-colors">{language === "fr" ? "Sécurité" : "Security"}</a></li>
+                <li><a href="/privacy" className="hover:text-[#00D632] transition-colors">{t_obj.footer.privacy}</a></li>
+                <li><a href="/terms" className="hover:text-[#00D632] transition-colors">{t_obj.footer.terms}</a></li>
+                <li><a href="/cookies" className="hover:text-[#00D632] transition-colors">{t_obj.footer.cookies}</a></li>
               </ul>
             </div>
           </div>

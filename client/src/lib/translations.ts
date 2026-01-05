@@ -52,7 +52,7 @@ export const translations = {
       orangeDesc: "Rejoignez les utilisateurs d'Orange Money et acceptez les paiements mobiles sans effort. Rapide, sécurisé et fiable.",
       flowTitle: "Flux de paiement",
       flow1: "Le client choisit la méthode de paiement",
-      flow2: "Le paiement est traité de manière sécurisée",
+      flow2: "Les informations de paiement s'affichent",
       flow3: "Les fonds sont versés sur votre compte",
       flow4: "La commande est exécutée et suivie"
     },
@@ -61,7 +61,13 @@ export const translations = {
       subtitle: "Découvrez comment Bouteek aide les marchands africains à développer leur activité.",
       testimonial1: "Bouteek a transformé ma petite boutique en une entreprise florissante en ligne. Je suis passée de 10 commandes par mois à plus de 200.",
       testimonial2: "Le système de gestion d'inventaire me fait gagner des heures chaque semaine. Le support client est exceptionnel et toujours utile.",
-      testimonial3: "J'adore la facilité de mise en place de ma boutique et d'acceptation des paiements. Bouteek gère la technique pour que je puisse me concentrer sur mon métier."
+      testimonial3: "J'adore la facilité de mise en place de ma boutique et d'acceptation des paiements. Bouteek gère la technique pour que je puisse me concentrer sur mon métier.",
+      name1: "Aïssatou Diallo",
+      name2: "Moussa Sall",
+      name3: "Fatoumata Ba",
+      role1: "Propriétaire de Boutique de Mode",
+      role2: "Détaillant en Électronique",
+      role3: "Vendeur d'Artisanat Fait Main"
     },
     pricing: {
       title: "Tarification simple et transparente",
@@ -169,7 +175,13 @@ export const translations = {
       subtitle: "See how Bouteek is helping African merchants grow their businesses.",
       testimonial1: "Bouteek transformed my small boutique into a thriving online business. I went from 10 orders a month to 200+.",
       testimonial2: "The inventory management system saves me hours every week. Customer support is exceptional and always helpful.",
-      testimonial3: "I love how easy it is to set up my store and accept payments. Bouteek handles the technical stuff so I can focus on my craft."
+      testimonial3: "I love how easy it is to set up my store and accept payments. Bouteek handles the technical stuff so I can focus on my craft.",
+      name1: "Aïssatou Diallo",
+      name2: "Moussa Sall",
+      name3: "Fatoumata Ba",
+      role1: "Fashion Boutique Owner",
+      role2: "Electronics Retailer",
+      role3: "Handmade Crafts Seller"
     },
     pricing: {
       title: "Simple, Transparent Pricing",
