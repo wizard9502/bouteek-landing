@@ -1,9 +1,13 @@
 import { Button } from "@/components/ui/button";
-import { ArrowRight, CheckCircle2, TrendingUp, Zap, Globe, Lock } from "lucide-react";
+import { ArrowRight, CheckCircle2, TrendingUp, Zap, Globe, Lock, Apple, Download } from "lucide-react";
 import { useState, useEffect } from "react";
+import { useLanguage } from "@/contexts/LanguageContext";
+import { translations } from "@/lib/translations";
 
 export default function Home() {
   const [isScrolled, setIsScrolled] = useState(false);
+  const [showComingSoon, setShowComingSoon] = useState(false);
+  const { language, setLanguage, t } = useLanguage();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -13,8 +17,111 @@ export default function Home() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  const handleAppStoreClick = (e: React.MouseEvent) => {
+    e.preventDefault();
+    setShowComingSoon(true);
+    setTimeout(() => setShowComingSoon(false), 3000);
+  };
+
+  const t_obj = translations[language];
+
+  const pricingPlans = [
+    {
+      name: t_obj.pricing.starter,
+      price: "15,000 XOF",
+      description: t_obj.pricing.starterDesc,
+      features: t_obj.pricing.features.starter,
+      highlighted: false
+    },
+    {
+      name: t_obj.pricing.launch,
+      price: "5,000 XOF",
+      description: t_obj.pricing.launchDesc,
+      features: t_obj.pricing.features.launch,
+      highlighted: true
+    },
+    {
+      name: t_obj.pricing.growth,
+      price: "12,500 XOF",
+      description: t_obj.pricing.growthDesc,
+      features: t_obj.pricing.features.growth,
+      highlighted: false
+    },
+    {
+      name: t_obj.pricing.pro,
+      price: "20,000 XOF",
+      description: t_obj.pricing.proDesc,
+      features: t_obj.pricing.features.pro,
+      highlighted: false
+    }
+  ];
+
+  const features = [
+    {
+      icon: <Globe size={32} />,
+      title: t_obj.features.feature1.title,
+      description: t_obj.features.feature1.desc
+    },
+    {
+      icon: <TrendingUp size={32} />,
+      title: t_obj.features.feature2.title,
+      description: t_obj.features.feature2.desc
+    },
+    {
+      icon: <Zap size={32} />,
+      title: t_obj.features.feature3.title,
+      description: t_obj.features.feature3.desc
+    },
+    {
+      icon: <Lock size={32} />,
+      title: t_obj.features.feature4.title,
+      description: t_obj.features.feature4.desc
+    },
+    {
+      icon: <CheckCircle2 size={32} />,
+      title: t_obj.features.feature5.title,
+      description: t_obj.features.feature5.desc
+    },
+    {
+      icon: <ArrowRight size={32} />,
+      title: t_obj.features.feature6.title,
+      description: t_obj.features.feature6.desc
+    }
+  ];
+
+  const testimonials = [
+    {
+      name: "Amara Diallo",
+      role: language === "fr" ? "Propriétaire de Boutique de Mode" : "Fashion Boutique Owner",
+      quote: t_obj.testimonials.testimonial1,
+      image: "👩‍💼"
+    },
+    {
+      name: "Kwame Mensah",
+      role: language === "fr" ? "Détaillant en Électronique" : "Electronics Retailer",
+      quote: t_obj.testimonials.testimonial2,
+      image: "👨‍💼"
+    },
+    {
+      name: "Zainab Hassan",
+      role: language === "fr" ? "Vendeur d'Artisanat Fait Main" : "Handmade Crafts Seller",
+      quote: t_obj.testimonials.testimonial3,
+      image: "👩‍🎨"
+    }
+  ];
+
   return (
     <div className="min-h-screen bg-white">
+      {/* Coming Soon Overlay */}
+      {showComingSoon && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 animate-in fade-in duration-300">
+          <div className="bg-white rounded-xl p-8 shadow-2xl text-center animate-in scale-in duration-300">
+            <h3 className="text-2xl font-bold text-black mb-2">{t_obj.appStore.comingSoon}</h3>
+            <p className="text-gray-600">{language === "fr" ? "Les applications mobiles seront bientôt disponibles." : "Mobile apps will be available soon."}</p>
+          </div>
+        </div>
+      )}
+
       {/* Navigation */}
       <nav className={`fixed top-0 w-full z-50 transition-all duration-300 ${isScrolled ? "bg-white shadow-lg" : "bg-transparent"}`}>
         <div className="container flex items-center justify-between h-20">
@@ -23,10 +130,24 @@ export default function Home() {
             <span className="text-2xl font-bold text-black">Bouteek</span>
           </div>
           <div className="hidden md:flex items-center gap-8">
-            <a href="#features" className="text-black hover:text-[#00D632] transition-colors">Features</a>
-            <a href="#payments" className="text-black hover:text-[#00D632] transition-colors">Payments</a>
-            <a href="#pricing" className="text-black hover:text-[#00D632] transition-colors">Pricing</a>
-            <Button className="btn-primary">Get Started</Button>
+            <a href="#features" className="text-black hover:text-[#00D632] transition-colors">{t_obj.nav.features}</a>
+            <a href="#payments" className="text-black hover:text-[#00D632] transition-colors">{t_obj.nav.payments}</a>
+            <a href="#pricing" className="text-black hover:text-[#00D632] transition-colors">{t_obj.nav.pricing}</a>
+            <div className="flex gap-2 ml-4 border-l border-gray-300 pl-4">
+              <button
+                onClick={() => setLanguage("fr")}
+                className={`px-3 py-1 rounded font-bold transition-colors ${language === "fr" ? "bg-[#00D632] text-black" : "text-gray-600 hover:text-black"}`}
+              >
+                FR
+              </button>
+              <button
+                onClick={() => setLanguage("en")}
+                className={`px-3 py-1 rounded font-bold transition-colors ${language === "en" ? "bg-[#00D632] text-black" : "text-gray-600 hover:text-black"}`}
+              >
+                EN
+              </button>
+            </div>
+            <Button className="btn-primary">{t_obj.nav.getStarted}</Button>
           </div>
         </div>
       </nav>
@@ -41,62 +162,80 @@ export default function Home() {
             <div className="space-y-8 animate-in fade-in slide-in-from-left duration-1000">
               <div>
                 <h1 className="text-5xl lg:text-6xl font-bold text-black mb-4 leading-tight">
-                  Empower Your African Business
+                  {t_obj.hero.title}
                 </h1>
-                <p className="text-xl text-gray-700 leading-relaxed">
-                  Build beautiful online storefronts, manage inventory, and get paid instantly with Bouteek. The all-in-one platform built for African merchants.
+                <p className="text-lg text-gray-700 leading-relaxed">
+                  {t_obj.hero.subtitle}
                 </p>
               </div>
               <div className="flex flex-col sm:flex-row gap-4">
                 <button className="btn-primary flex items-center justify-center gap-2">
-                  Start Free Trial <ArrowRight size={20} />
+                  {t_obj.hero.cta1} <ArrowRight size={20} />
                 </button>
                 <button className="btn-outline">
-                  Watch Demo
+                  {t_obj.hero.cta2}
                 </button>
               </div>
               <div className="flex flex-col gap-3 pt-4">
                 <div className="flex items-center gap-3">
                   <CheckCircle2 size={24} className="text-[#00D632]" />
-                  <span className="text-gray-700">No credit card required</span>
+                  <span className="text-gray-700">{t_obj.hero.benefit1}</span>
                 </div>
                 <div className="flex items-center gap-3">
                   <CheckCircle2 size={24} className="text-[#00D632]" />
-                  <span className="text-gray-700">Free setup and onboarding</span>
+                  <span className="text-gray-700">{t_obj.hero.benefit2}</span>
                 </div>
                 <div className="flex items-center gap-3">
                   <CheckCircle2 size={24} className="text-[#00D632]" />
-                  <span className="text-gray-700">24/7 merchant support</span>
+                  <span className="text-gray-700">{t_obj.hero.benefit3}</span>
                 </div>
+              </div>
+              
+              {/* App Store Icons */}
+              <div className="flex gap-4 pt-4">
+                <button
+                  onClick={handleAppStoreClick}
+                  className="flex items-center gap-2 px-4 py-3 bg-black text-white rounded-lg hover:bg-[#1a1a1a] transition-colors font-bold"
+                >
+                  <Apple size={20} />
+                  {language === "fr" ? "App Store" : "App Store"}
+                </button>
+                <button
+                  onClick={handleAppStoreClick}
+                  className="flex items-center gap-2 px-4 py-3 bg-black text-white rounded-lg hover:bg-[#1a1a1a] transition-colors font-bold"
+                >
+                  <Download size={20} />
+                  {language === "fr" ? "Google Play" : "Google Play"}
+                </button>
               </div>
             </div>
             <div className="relative animate-in fade-in slide-in-from-right duration-1000">
               <div className="bg-gradient-to-br from-[#00D632] to-black rounded-2xl p-8 text-white shadow-2xl">
                 <div className="space-y-6">
                   <div className="bg-white/10 rounded-lg p-4 backdrop-blur">
-                    <p className="text-sm opacity-80">Total Revenue</p>
+                    <p className="text-sm opacity-80">{language === "fr" ? "Revenu Total" : "Total Revenue"}</p>
                     <p className="text-3xl font-bold">2.4M XOF</p>
-                    <p className="text-xs opacity-60 mt-1">+24% this month</p>
+                    <p className="text-xs opacity-60 mt-1">{language === "fr" ? "+24% ce mois" : "+24% this month"}</p>
                   </div>
                   <div className="grid grid-cols-2 gap-4">
                     <div className="bg-white/10 rounded-lg p-4 backdrop-blur">
-                      <p className="text-xs opacity-80">Orders</p>
+                      <p className="text-xs opacity-80">{language === "fr" ? "Commandes" : "Orders"}</p>
                       <p className="text-2xl font-bold">1,234</p>
                     </div>
                     <div className="bg-white/10 rounded-lg p-4 backdrop-blur">
-                      <p className="text-xs opacity-80">Customers</p>
+                      <p className="text-xs opacity-80">{language === "fr" ? "Clients" : "Customers"}</p>
                       <p className="text-2xl font-bold">892</p>
                     </div>
                   </div>
                   <div className="bg-white/10 rounded-lg p-4 backdrop-blur">
-                    <p className="text-sm opacity-80 mb-2">Recent Payments</p>
+                    <p className="text-sm opacity-80 mb-2">{language === "fr" ? "Paiements Récents" : "Recent Payments"}</p>
                     <div className="space-y-2">
                       <div className="flex justify-between items-center text-sm">
-                        <span>Order #1024</span>
+                        <span>{language === "fr" ? "Commande #1024" : "Order #1024"}</span>
                         <span className="font-bold">150K XOF</span>
                       </div>
                       <div className="flex justify-between items-center text-sm">
-                        <span>Order #1023</span>
+                        <span>{language === "fr" ? "Commande #1023" : "Order #1023"}</span>
                         <span className="font-bold">89K XOF</span>
                       </div>
                     </div>
@@ -112,44 +251,13 @@ export default function Home() {
       <section id="features" className="py-20 bg-black text-white">
         <div className="container">
           <div className="text-center mb-16">
-            <h2 className="text-4xl lg:text-5xl font-bold mb-4">Everything You Need to Succeed</h2>
+            <h2 className="text-4xl lg:text-5xl font-bold mb-4">{t_obj.features.title}</h2>
             <p className="text-xl text-gray-300 max-w-2xl mx-auto">
-              Comprehensive tools designed specifically for African merchants to build, sell, and grow online.
+              {t_obj.features.subtitle}
             </p>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {[
-              {
-                icon: <Globe size={32} />,
-                title: "Beautiful Storefronts",
-                description: "Create stunning online stores without coding. Choose from professional templates or customize your own."
-              },
-              {
-                icon: <TrendingUp size={32} />,
-                title: "Advanced Analytics",
-                description: "Track sales, customer behavior, and inventory in real-time. Make data-driven decisions to grow faster."
-              },
-              {
-                icon: <Zap size={32} />,
-                title: "Inventory Management",
-                description: "Manage stock levels, track products, and automate reordering. Never oversell or run out of stock."
-              },
-              {
-                icon: <Lock size={32} />,
-                title: "Secure Payments",
-                description: "Accept payments from Wave, Orange Money, and more. Instant settlements to your bank account."
-              },
-              {
-                icon: <CheckCircle2 size={32} />,
-                title: "Order Management",
-                description: "Process orders efficiently with automated workflows. Keep customers updated every step of the way."
-              },
-              {
-                icon: <ArrowRight size={32} />,
-                title: "Marketing Tools",
-                description: "Built-in email campaigns, social media integration, and customer loyalty programs to drive growth."
-              }
-            ].map((feature, idx) => (
+            {features.map((feature, idx) => (
               <div key={idx} className="bg-[#1a1a1a] rounded-xl p-8 hover:bg-[#252525] transition-colors duration-300 border border-[#333]">
                 <div className="text-[#00D632] mb-4">{feature.icon}</div>
                 <h3 className="text-xl font-bold mb-3">{feature.title}</h3>
@@ -164,9 +272,9 @@ export default function Home() {
       <section id="payments" className="py-20 bg-white">
         <div className="container">
           <div className="text-center mb-16">
-            <h2 className="text-4xl lg:text-5xl font-bold text-black mb-4">Get Paid Instantly</h2>
+            <h2 className="text-4xl lg:text-5xl font-bold text-black mb-4">{t_obj.payments.title}</h2>
             <p className="text-xl text-gray-700 max-w-2xl mx-auto">
-              Accept payments from your customers through trusted payment partners and receive settlements directly to your account.
+              {t_obj.payments.subtitle}
             </p>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
@@ -175,8 +283,8 @@ export default function Home() {
                 <div className="flex items-start gap-4">
                   <img src="/wave-logo.png" alt="Wave" className="h-16 w-16 rounded-lg flex-shrink-0" />
                   <div>
-                    <h3 className="text-xl font-bold text-black mb-2">Wave Money Transfers</h3>
-                    <p className="text-gray-700">Accept payments from millions of Wave users across Africa. Instant settlements with zero hidden fees.</p>
+                    <h3 className="text-xl font-bold text-black mb-2">{t_obj.payments.wave}</h3>
+                    <p className="text-gray-700">{t_obj.payments.waveDesc}</p>
                   </div>
                 </div>
               </div>
@@ -184,30 +292,30 @@ export default function Home() {
                 <div className="flex items-start gap-4">
                   <img src="/orange-money-logo.png" alt="Orange Money" className="h-16 w-16 rounded-lg flex-shrink-0" />
                   <div>
-                    <h3 className="text-xl font-bold text-black mb-2">Orange Money</h3>
-                    <p className="text-gray-700">Reach Orange Money users and accept mobile payments seamlessly. Fast, secure, and reliable.</p>
+                    <h3 className="text-xl font-bold text-black mb-2">{t_obj.payments.orange}</h3>
+                    <p className="text-gray-700">{t_obj.payments.orangeDesc}</p>
                   </div>
                 </div>
               </div>
             </div>
             <div className="bg-gradient-to-br from-[#00D632] to-[#00a825] rounded-2xl p-12 text-black">
-              <h3 className="text-2xl font-bold mb-6">Payment Flow</h3>
+              <h3 className="text-2xl font-bold mb-6">{t_obj.payments.flowTitle}</h3>
               <div className="space-y-4">
                 <div className="flex items-center gap-4">
                   <div className="bg-black text-[#00D632] rounded-full w-10 h-10 flex items-center justify-center font-bold">1</div>
-                  <p className="font-semibold">Customer selects payment method</p>
+                  <p className="font-semibold">{t_obj.payments.flow1}</p>
                 </div>
                 <div className="flex items-center gap-4">
                   <div className="bg-black text-[#00D632] rounded-full w-10 h-10 flex items-center justify-center font-bold">2</div>
-                  <p className="font-semibold">Payment processed securely</p>
+                  <p className="font-semibold">{t_obj.payments.flow2}</p>
                 </div>
                 <div className="flex items-center gap-4">
                   <div className="bg-black text-[#00D632] rounded-full w-10 h-10 flex items-center justify-center font-bold">3</div>
-                  <p className="font-semibold">Funds settled to your account</p>
+                  <p className="font-semibold">{t_obj.payments.flow3}</p>
                 </div>
                 <div className="flex items-center gap-4">
                   <div className="bg-black text-[#00D632] rounded-full w-10 h-10 flex items-center justify-center font-bold">4</div>
-                  <p className="font-semibold">Order fulfilled and tracked</p>
+                  <p className="font-semibold">{t_obj.payments.flow4}</p>
                 </div>
               </div>
             </div>
@@ -219,30 +327,11 @@ export default function Home() {
       <section className="py-20 bg-[#f5f5f5]">
         <div className="container">
           <div className="text-center mb-16">
-            <h2 className="text-4xl lg:text-5xl font-bold text-black mb-4">Trusted by Merchants</h2>
-            <p className="text-xl text-gray-700">See how Bouteek is helping African merchants grow their businesses.</p>
+            <h2 className="text-4xl lg:text-5xl font-bold text-black mb-4">{t_obj.testimonials.title}</h2>
+            <p className="text-xl text-gray-700">{t_obj.testimonials.subtitle}</p>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {[
-              {
-                name: "Amara Diallo",
-                role: "Fashion Boutique Owner",
-                quote: "Bouteek transformed my small boutique into a thriving online business. I went from 10 orders a month to 200+.",
-                image: "👩‍💼"
-              },
-              {
-                name: "Kwame Mensah",
-                role: "Electronics Retailer",
-                quote: "The inventory management system saves me hours every week. Customer support is exceptional and always helpful.",
-                image: "👨‍💼"
-              },
-              {
-                name: "Zainab Hassan",
-                role: "Handmade Crafts Seller",
-                quote: "I love how easy it is to set up my store and accept payments. Bouteek handles the technical stuff so I can focus on my craft.",
-                image: "👩‍🎨"
-              }
-            ].map((testimonial, idx) => (
+            {testimonials.map((testimonial, idx) => (
               <div key={idx} className="bg-white rounded-xl p-8 shadow-lg hover:shadow-xl transition-shadow">
                 <div className="flex items-center gap-4 mb-4">
                   <div className="text-4xl">{testimonial.image}</div>
@@ -262,48 +351,28 @@ export default function Home() {
       <section id="pricing" className="py-20 bg-white">
         <div className="container">
           <div className="text-center mb-16">
-            <h2 className="text-4xl lg:text-5xl font-bold text-black mb-4">Simple, Transparent Pricing</h2>
+            <h2 className="text-4xl lg:text-5xl font-bold text-black mb-4">{t_obj.pricing.title}</h2>
             <p className="text-xl text-gray-700 max-w-2xl mx-auto">
-              Choose the plan that fits your business. No hidden fees, cancel anytime.
+              {t_obj.pricing.subtitle}
             </p>
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto">
-            {[
-              {
-                name: "Starter",
-                price: "Free",
-                description: "Perfect for getting started",
-                features: ["1 Product", "Basic Analytics", "Email Support", "Mobile App Access"]
-              },
-              {
-                name: "Growth",
-                price: "2,500 XOF",
-                description: "Most popular for growing businesses",
-                features: ["Unlimited Products", "Advanced Analytics", "Priority Support", "Marketing Tools", "Multiple Payment Methods"],
-                highlighted: true
-              },
-              {
-                name: "Pro",
-                price: "7,500 XOF",
-                description: "For established merchants",
-                features: ["Everything in Growth", "API Access", "Custom Domain", "Dedicated Support", "Advanced Reporting"]
-              }
-            ].map((plan, idx) => (
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+            {pricingPlans.map((plan, idx) => (
               <div key={idx} className={`rounded-xl p-8 transition-all ${plan.highlighted ? "bg-[#00D632] text-black scale-105 shadow-2xl" : "bg-[#f5f5f5] text-black border-2 border-gray-200"}`}>
                 <h3 className="text-2xl font-bold mb-2">{plan.name}</h3>
                 <p className={`text-sm mb-4 ${plan.highlighted ? "text-black/80" : "text-gray-600"}`}>{plan.description}</p>
                 <div className="mb-6">
                   <span className="text-4xl font-bold">{plan.price}</span>
-                  {plan.price !== "Free" && <span className="text-sm ml-2">/month</span>}
+                  <span className="text-sm ml-2">{t_obj.pricing.perMonth}</span>
                 </div>
                 <button className={`w-full font-bold py-3 rounded-lg mb-6 transition-colors ${plan.highlighted ? "bg-black text-[#00D632] hover:bg-[#1a1a1a]" : "bg-black text-white hover:bg-[#1a1a1a]"}`}>
-                  Get Started
+                  {t_obj.pricing.getStartedBtn}
                 </button>
                 <ul className="space-y-3">
                   {plan.features.map((feature, fidx) => (
                     <li key={fidx} className="flex items-center gap-2">
                       <CheckCircle2 size={20} className={plan.highlighted ? "text-black" : "text-[#00D632]"} />
-                      <span>{feature}</span>
+                      <span className="text-sm">{feature}</span>
                     </li>
                   ))}
                 </ul>
@@ -316,14 +385,14 @@ export default function Home() {
       {/* CTA Section */}
       <section className="py-20 bg-black text-white">
         <div className="container text-center">
-          <h2 className="text-4xl lg:text-5xl font-bold mb-6">Ready to Start Your Journey?</h2>
+          <h2 className="text-4xl lg:text-5xl font-bold mb-6">{t_obj.cta.title}</h2>
           <p className="text-xl text-gray-300 mb-8 max-w-2xl mx-auto">
-            Join thousands of African merchants who are already selling online with Bouteek. Get started free today.
+            {t_obj.cta.subtitle}
           </p>
           <button className="btn-primary text-lg py-4 px-8 flex items-center justify-center gap-2 mx-auto">
-            Start Free Trial <ArrowRight size={24} />
+            {t_obj.cta.button} <ArrowRight size={24} />
           </button>
-          <p className="text-gray-400 mt-4">No credit card required. Free setup and onboarding.</p>
+          <p className="text-gray-400 mt-4">{t_obj.cta.note}</p>
         </div>
       </section>
 
@@ -336,35 +405,35 @@ export default function Home() {
                 <img src="/bouteek-logo.jpg" alt="Bouteek" className="h-8 w-8 rounded" />
                 <span className="font-bold text-white">Bouteek</span>
               </div>
-              <p className="text-sm">Empowering African merchants to build and grow their businesses online.</p>
+              <p className="text-sm">{t_obj.footer.tagline}</p>
             </div>
             <div>
-              <h4 className="font-bold text-white mb-4">Product</h4>
+              <h4 className="font-bold text-white mb-4">{t_obj.footer.product}</h4>
               <ul className="space-y-2 text-sm">
-                <li><a href="#" className="hover:text-[#00D632] transition-colors">Features</a></li>
-                <li><a href="#" className="hover:text-[#00D632] transition-colors">Pricing</a></li>
-                <li><a href="#" className="hover:text-[#00D632] transition-colors">Security</a></li>
+                <li><a href="#" className="hover:text-[#00D632] transition-colors">{t_obj.nav.features}</a></li>
+                <li><a href="#" className="hover:text-[#00D632] transition-colors">{t_obj.nav.pricing}</a></li>
+                <li><a href="#" className="hover:text-[#00D632] transition-colors">{language === "fr" ? "Sécurité" : "Security"}</a></li>
               </ul>
             </div>
             <div>
-              <h4 className="font-bold text-white mb-4">Company</h4>
+              <h4 className="font-bold text-white mb-4">{t_obj.footer.company}</h4>
               <ul className="space-y-2 text-sm">
-                <li><a href="#" className="hover:text-[#00D632] transition-colors">About</a></li>
-                <li><a href="#" className="hover:text-[#00D632] transition-colors">Blog</a></li>
-                <li><a href="#" className="hover:text-[#00D632] transition-colors">Contact</a></li>
+                <li><a href="#" className="hover:text-[#00D632] transition-colors">{t_obj.footer.about}</a></li>
+                <li><a href="#" className="hover:text-[#00D632] transition-colors">{t_obj.footer.blog}</a></li>
+                <li><a href="#" className="hover:text-[#00D632] transition-colors">{t_obj.footer.contact}</a></li>
               </ul>
             </div>
             <div>
-              <h4 className="font-bold text-white mb-4">Legal</h4>
+              <h4 className="font-bold text-white mb-4">{t_obj.footer.legal}</h4>
               <ul className="space-y-2 text-sm">
-                <li><a href="#" className="hover:text-[#00D632] transition-colors">Privacy</a></li>
-                <li><a href="#" className="hover:text-[#00D632] transition-colors">Terms</a></li>
-                <li><a href="#" className="hover:text-[#00D632] transition-colors">Cookies</a></li>
+                <li><a href="#" className="hover:text-[#00D632] transition-colors">{t_obj.footer.privacy}</a></li>
+                <li><a href="#" className="hover:text-[#00D632] transition-colors">{t_obj.footer.terms}</a></li>
+                <li><a href="#" className="hover:text-[#00D632] transition-colors">{t_obj.footer.cookies}</a></li>
               </ul>
             </div>
           </div>
           <div className="border-t border-gray-800 pt-8 flex flex-col md:flex-row justify-between items-center">
-            <p className="text-sm">&copy; 2025 Bouteek. All rights reserved.</p>
+            <p className="text-sm">&copy; 2025 Bouteek. {t_obj.footer.copyright}</p>
             <div className="flex gap-6 mt-4 md:mt-0">
               <a href="#" className="hover:text-[#00D632] transition-colors">Twitter</a>
               <a href="#" className="hover:text-[#00D632] transition-colors">LinkedIn</a>
