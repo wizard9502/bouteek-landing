@@ -383,7 +383,7 @@ export default function Home() {
       </section>
 
       {/* Referral Section */}
-      <section className="py-20 bg-gradient-to-r from-black via-[#00D632]/10 to-black border-t border-b border-gray-800">
+      <section className="py-20 bg-black border-t border-b border-[#00D632]/30">
         <div className="container">
           <div className="max-w-4xl mx-auto">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
@@ -422,7 +422,7 @@ export default function Home() {
               </div>
 
               {/* Right side - Visual */}
-              <div className="bg-gradient-to-br from-[#00D632]/20 to-[#00D632]/5 rounded-2xl p-8 border border-[#00D632]/30">
+              <div className="bg-gradient-to-br from-[#00D632]/30 to-[#00D632]/10 rounded-2xl p-8 border border-[#00D632]/50 shadow-lg shadow-[#00D632]/20">
                 <div className="space-y-6">
                   <div className="text-center">
                     <div className="text-5xl font-bold text-[#00D632] mb-2">20%</div>
