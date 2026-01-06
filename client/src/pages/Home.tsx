@@ -5,6 +5,7 @@ import { useLanguage } from "@/contexts/LanguageContext";
 import { translations } from "@/lib/translations";
 import NewsletterSignup from "@/components/NewsletterSignup";
 import FAQ from "@/components/FAQ";
+import MerchantMetrics from "@/components/MerchantMetrics";
 import AppStoreButtons from "@/components/AppStoreButtons";
 
 export default function Home() {
@@ -365,11 +366,11 @@ export default function Home() {
             ))}
           </div>
         </div>
-      </section>
+      </section>      {/* Merchant Metrics */}
+      <MerchantMetrics />
 
       {/* CTA Section */}
-      <section className="py-20 bg-black text-white">
-        <div className="container text-center">
+      <section className="py-20 bg-[#00D632] text-black">       <div className="container text-center">
           <h2 className="text-4xl lg:text-5xl font-bold mb-6">{t_obj.cta.title}</h2>
           <p className="text-xl text-gray-300 mb-8 max-w-2xl mx-auto">
             {t_obj.cta.subtitle}
