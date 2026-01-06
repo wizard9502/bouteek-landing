@@ -1,5 +1,5 @@
 import { Button } from "@/components/ui/button";
-import { ArrowRight, Menu, X, Check, Zap, Lock, Smartphone, Globe, TrendingUp, Instagram, MessageCircle } from "lucide-react";
+import { ArrowRight, Menu, X, Check, Zap, Lock, Smartphone, Globe, TrendingUp, Instagram, Music } from "lucide-react";
 import { useState, useEffect } from "react";
 import { useLanguage } from "@/contexts/LanguageContext";
 import { translations } from "@/lib/translations";
@@ -429,18 +429,14 @@ export default function Home() {
           <div className="border-t border-gray-800 pt-8 flex flex-col md:flex-row justify-between items-center">
             <p className="text-sm">&copy; 2025 Bouteek. {t_obj.footer.copyright}</p>
             <div className="flex gap-6 mt-4 md:mt-0">
-              <a href="https://instagram.com/bouteek.shop" target="_blank" rel="noopener noreferrer" className="hover:text-[#00D632] transition-colors" title="Instagram">
-                <Instagram size={24} />
+              <a href="https://instagram.com/bouteek.shop" target="_blank" rel="noopener noreferrer" className="hover:opacity-80 transition-opacity" title="Instagram">
+                <Instagram size={24} className="text-gray-400 hover:text-[#00D632]" />
               </a>
-              <a href="https://snapchat.com/add/bouteek.shop" target="_blank" rel="noopener noreferrer" className="hover:text-[#00D632] transition-colors" title="Snapchat">
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                  <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm3.5-9c.83 0 1.5-.67 1.5-1.5S16.33 8 15.5 8 14 8.67 14 9.5s.67 1.5 1.5 1.5zm-7 0c.83 0 1.5-.67 1.5-1.5S9.33 8 8.5 8 7 8.67 7 9.5 7.67 11 8.5 11zm3.5 6.5c2.33 0 4.31-1.46 5.11-3.5H6.89c.8 2.04 2.78 3.5 5.11 3.5z"/>
-                </svg>
+              <a href="https://snapchat.com/add/bouteek.shop" target="_blank" rel="noopener noreferrer" className="hover:opacity-80 transition-opacity" title="Snapchat">
+                <img src="/snapchat-icon.png" alt="Snapchat" className="w-6 h-6" />
               </a>
-              <a href="https://tiktok.com/@bouteek.shop" target="_blank" rel="noopener noreferrer" className="hover:text-[#00D632] transition-colors" title="TikTok">
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                  <path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.68v13.67a2.4 2.4 0 1 1-4.77-2.3A2.4 2.4 0 0 1 9.1 13.66V9.58a6.8 6.8 0 0 0-1-.05A6.33 6.33 0 0 0 5 10c-3.63 0-6.62-2.94-6.62-6.56-.02-3.66 2.93-6.66 6.59-6.66 1.22 0 2.36.3 3.38.84V.5A9.9 9.9 0 0 0 5 0C2.24 0 .04 2.13.04 4.76 0 7.39 2.24 9.5 5 9.5c.64 0 1.27-.08 1.88-.25v4.21a9.5 9.5 0 0 0 5.91 2.12c8.05 0 14.61-6.4 14.61-14.29 0-.63-.04-1.25-.15-1.86a10.36 10.36 0 0 0-9.66-8.93z"/>
-                </svg>
+              <a href="https://tiktok.com/@bouteek.shop" target="_blank" rel="noopener noreferrer" className="hover:opacity-80 transition-opacity" title="TikTok">
+                <img src="/tiktok-icon.png" alt="TikTok" className="w-6 h-6" />
               </a>
             </div>
           </div>
