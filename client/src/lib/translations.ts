@@ -114,7 +114,7 @@ export const translations = {
     },
     referral: {
       title: "Gagnez 20% de commission à vie",
-      subtitle: "Référez vos amis marchands à Bouteek et gagnez 20% de commission sur leurs frais de service pour toujours. Pas de limite, pas de fin.",
+      subtitle: "Référez vos amis marchands à Bouteek et gagnez 20% de commission sur leurs frais d'abonnement pour toujours. Pas de limite, pas de fin.",
       benefit1: "20% de commission récurrente",
       benefit2: "Paiements mensuels automatiques",
       benefit3: "Pas de limite de gains",
@@ -237,7 +237,7 @@ export const translations = {
     },
     referral: {
       title: "Earn 20% Commission for Life",
-      subtitle: "Refer merchant friends to Bouteek and earn 20% commission on their service fees forever. No limits, no end date.",
+      subtitle: "Refer merchant friends to Bouteek and earn 20% commission on their subscription fees forever. No limits, no end date.",
       benefit1: "20% recurring commission",
       benefit2: "Automatic monthly payouts",
       benefit3: "Unlimited earning potential",

@@ -9,28 +9,24 @@ export default function MerchantMetrics() {
   const metrics = [
     {
       value: "2,400+",
-      label: language === "fr" ? "Marchands Actifs" : "Active Merchants",
-      icon: "👥"
+      label: language === "fr" ? "Marchands Actifs" : "Active Merchants"
     },
     {
       value: "15.2M",
-      label: language === "fr" ? "XOF Traités" : "XOF Processed",
-      icon: "💰"
+      label: language === "fr" ? "XOF Traités" : "XOF Processed"
     },
     {
       value: "89K+",
-      label: language === "fr" ? "Commandes" : "Orders",
-      icon: "📦"
+      label: language === "fr" ? "Commandes" : "Orders"
     },
     {
       value: "98%",
-      label: language === "fr" ? "Satisfaction" : "Satisfaction",
-      icon: "⭐"
+      label: language === "fr" ? "Satisfaction" : "Satisfaction"
     }
   ];
 
   return (
-    <section className="py-16 bg-gradient-to-r from-[#00D632]/10 to-black/50 border-t border-b border-gray-800">
+    <section className="py-16 bg-black border-t border-b border-[#00D632]/30">
       <div className="container">
         <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
           {metrics.map((metric, idx) => (
