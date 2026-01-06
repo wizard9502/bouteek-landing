@@ -111,6 +111,15 @@ export const translations = {
     },
     appStore: {
       comingSoon: "Bientôt disponible"
+    },
+    referral: {
+      title: "Gagnez 20% de commission à vie",
+      subtitle: "Référez vos amis marchands à Bouteek et gagnez 20% de commission sur leurs frais de service pour toujours. Pas de limite, pas de fin.",
+      benefit1: "20% de commission récurrente",
+      benefit2: "Paiements mensuels automatiques",
+      benefit3: "Pas de limite de gains",
+      cta: "Devenir Ambassadeur Bouteek",
+      description: "Aidez d'autres marchands à réussir et gagnez passivement. C'est un gagnant-gagnant pour tous."
     }
   },
   en: {
@@ -225,6 +234,15 @@ export const translations = {
     },
     appStore: {
       comingSoon: "Coming Soon"
+    },
+    referral: {
+      title: "Earn 20% Commission for Life",
+      subtitle: "Refer merchant friends to Bouteek and earn 20% commission on their service fees forever. No limits, no end date.",
+      benefit1: "20% recurring commission",
+      benefit2: "Automatic monthly payouts",
+      benefit3: "Unlimited earning potential",
+      cta: "Become a Bouteek Ambassador",
+      description: "Help other merchants succeed and earn passively. It's a win-win for everyone."
     }
   }
 };
