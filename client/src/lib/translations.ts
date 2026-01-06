@@ -17,7 +17,7 @@ export const translations = {
     },
     features: {
       title: "Tout ce dont vous avez besoin pour réussir",
-      subtitle: "Des outils complets conçus spécifiquement pour les marchands africains qui veulent construire et développer leur activité en ligne.",
+      subtitle: "Des outils complets conçus spécifiquement pour les marchands qui veulent construire et développer leur activité en ligne.",
       feature1: {
         title: "Boutiques Magnifiques",
         desc: "Créez des boutiques en ligne époustouflantes sans coder. Choisissez parmi des modèles professionnels ou personnalisez le vôtre."
@@ -96,7 +96,7 @@ export const translations = {
       note: "Aucune carte bancaire requise. Installation et onboarding gratuits."
     },
     footer: {
-      tagline: "Autonomiser les marchands africains pour construire et développer leur activité en ligne.",
+      tagline: "La solution e-commerce made in Africa pour les marchands désirant construire et développer leur activité en ligne.",
       product: "Produit",
       company: "Entreprise",
       legal: "Légal",
