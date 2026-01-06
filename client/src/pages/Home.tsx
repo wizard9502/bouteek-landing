@@ -32,7 +32,7 @@ export default function Home() {
   const pricingPlans = [
     {
       name: t_obj.pricing.starter,
-      price: "15,000 XOF",
+      price: "1,500 XOF",
       description: t_obj.pricing.starterDesc,
       features: t_obj.pricing.features.starter,
       highlighted: false
