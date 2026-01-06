@@ -20,7 +20,7 @@ export default function AppStoreButtons() {
           className="hover:opacity-80 transition-opacity"
           title="Download on the App Store"
         >
-          <img src="/app-store-badge.png" alt="Download on the App Store" className="h-12" />
+          <img src="/app-store-badge.png" alt="Download on the App Store" className="h-14" />
         </button>
 
         {/* Google Play Store Button */}
@@ -29,7 +29,7 @@ export default function AppStoreButtons() {
           className="hover:opacity-80 transition-opacity"
           title="Get it on Google Play"
         >
-          <img src="/google-play-badge.png" alt="Get it on Google Play" className="h-10" />
+          <img src="/google-play-badge.png" alt="Get it on Google Play" className="h-14" />
         </button>
       </div>
 
