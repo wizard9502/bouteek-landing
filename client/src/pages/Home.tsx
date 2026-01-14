@@ -255,6 +255,9 @@ export default function Home() {
         </div>
       </section>
 
+      {/* App Showcase Section */}
+      <AppShowcase />
+
       {/* Payment Partners Section */}
       <section id="payments" className="py-20 bg-white">
         <div className="container">
@@ -333,9 +336,6 @@ export default function Home() {
           </div>
         </div>
       </section>
-
-      {/* App Showcase Section */}
-      <AppShowcase />
 
       {/* Pricing Section */}
       <section id="pricing" className="py-20 bg-white">
