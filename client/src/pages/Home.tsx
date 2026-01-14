@@ -7,6 +7,7 @@ import NewsletterSignup from "@/components/NewsletterSignup";
 import FAQ from "@/components/FAQ";
 import MerchantMetrics from "@/components/MerchantMetrics";
 import AppStoreButtons from "@/components/AppStoreButtons";
+import AppShowcase from "@/components/AppShowcase";
 
 export default function Home() {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -332,6 +333,9 @@ export default function Home() {
           </div>
         </div>
       </section>
+
+      {/* App Showcase Section */}
+      <AppShowcase />
 
       {/* Pricing Section */}
       <section id="pricing" className="py-20 bg-white">
