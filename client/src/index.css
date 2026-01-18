@@ -43,13 +43,22 @@
 }
 
 :root {
-  /* Bouteek Brand Colors */
+  /* Bouteek Brand Colors - Shopify Premium Theme */
   --bouteek-green: #00D632;
+  --bouteek-green-dark: #00a825;
+  --bouteek-green-light: #33ff5e;
   --bouteek-black: #000000;
   --bouteek-white: #FFFFFF;
   --bouteek-orange: #FF9500;
   --bouteek-dark-gray: #1a1a1a;
   --bouteek-light-gray: #f5f5f5;
+  --bouteek-gray-100: #f9fafb;
+  --bouteek-gray-200: #f3f4f6;
+  --bouteek-gray-300: #e5e7eb;
+  --bouteek-gray-400: #d1d5db;
+  --bouteek-gray-500: #9ca3af;
+  --bouteek-gray-600: #6b7280;
+  --bouteek-gray-700: #374151;
   
   --primary: var(--bouteek-green);
   --primary-foreground: var(--bouteek-black);
@@ -156,17 +165,33 @@
     }
   }
   
-  /* Bouteek-specific components */
+  /* Shopify-inspired Premium Components */
   .btn-primary {
-    @apply bg-[#00D632] text-black font-bold px-6 py-3 rounded-lg hover:bg-[#00b829] transition-colors duration-200 inline-block;
+    @apply bg-[#00D632] text-black font-bold px-6 py-3 rounded-lg hover:bg-[#00a825] transition-all duration-200 inline-block shadow-sm hover:shadow-md active:scale-95;
+  }
+  
+  .btn-primary-lg {
+    @apply bg-[#00D632] text-black font-bold px-8 py-4 rounded-lg hover:bg-[#00a825] transition-all duration-200 inline-block shadow-md hover:shadow-lg active:scale-95 text-lg;
   }
   
   .btn-secondary {
-    @apply bg-black text-white font-bold px-6 py-3 rounded-lg hover:bg-[#1a1a1a] transition-colors duration-200 inline-block border-2 border-black;
+    @apply bg-black text-white font-bold px-6 py-3 rounded-lg hover:bg-[#1a1a1a] transition-all duration-200 inline-block border-2 border-black shadow-sm hover:shadow-md active:scale-95;
   }
   
   .btn-outline {
-    @apply bg-transparent text-black font-bold px-6 py-3 rounded-lg hover:bg-black hover:text-white transition-colors duration-200 inline-block border-2 border-black;
+    @apply bg-transparent text-black font-bold px-6 py-3 rounded-lg hover:bg-black hover:text-white transition-all duration-200 inline-block border-2 border-black active:scale-95;
+  }
+  
+  .btn-ghost {
+    @apply bg-transparent text-black font-semibold px-4 py-2 rounded-lg hover:bg-gray-100 transition-all duration-200 inline-block;
+  }
+  
+  .card-premium {
+    @apply bg-white rounded-xl p-8 border border-gray-200 shadow-sm hover:shadow-lg transition-all duration-300 hover:border-[#00D632];
+  }
+  
+  .card-minimal {
+    @apply bg-white rounded-lg p-6 border border-gray-100 hover:border-gray-200 transition-all duration-300;
   }
   
   .section-divider {
@@ -178,5 +203,17 @@
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
+  }
+  
+  .section-spacing {
+    @apply py-24 lg:py-32;
+  }
+  
+  .section-spacing-sm {
+    @apply py-16 lg:py-20;
+  }
+  
+  .feature-icon {
+    @apply w-12 h-12 rounded-lg bg-[#00D632]/10 flex items-center justify-center text-[#00D632] mb-4;
   }
 }
